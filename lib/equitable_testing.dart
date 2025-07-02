@@ -26,4 +26,15 @@ class Person {
   final int age;
 
   const Person({required this.name, required this.age});
+
+  @override
+  bool operator ==(Object other){
+    return identical(this, other) ||
+    other is Person &&
+        runtimeType == other.runtimeType &&
+        name == other.name &&
+        age == other.age;
+  }
+  @override
+  int get hashCode => name.hashCode ^ age.hashCode;
 }
