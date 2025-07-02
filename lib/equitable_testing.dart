@@ -7,7 +7,12 @@ class EquitableTesting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: (){}
+          onPressed: (){
+          Person person  =  Person(name: 'waiz', age: 20);
+          Person person1 =  Person(name: 'waiz', age: 20);
+          print(person == person1);
+
+          }
       ),
     );
   }
