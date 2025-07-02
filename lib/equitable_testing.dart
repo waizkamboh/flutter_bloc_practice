@@ -10,6 +10,9 @@ class EquitableTesting extends StatelessWidget {
           onPressed: (){
           Person person  =  Person(name: 'waiz', age: 20);
           Person person1 =  Person(name: 'waiz', age: 20);
+          print(person.hashCode.toString());
+          print(person1.hashCode.toString());
+          print(person == person1);
           print(person == person1);
 
           }
