@@ -34,7 +34,7 @@ class CounterScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: (){
                     print('buildI');
-                    context.read<CounterBloc>().add(IncrementCounter());
+                    context.read<CounterBloc>().add(IncrementCounterEvent());
                },
                   child: Text('Increment'),
                 ),
@@ -42,7 +42,7 @@ class CounterScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: (){
                     print('buildD');
-                    context.read<CounterBloc>().add(DecrementCounter());
+                    context.read<CounterBloc>().add(DecrementCounterEvent());
                   },
                   child: Text('Decrement'),
                 ),

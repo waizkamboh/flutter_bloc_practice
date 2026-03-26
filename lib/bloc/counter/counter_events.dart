@@ -6,6 +6,6 @@ abstract class CounterEvents extends Equatable {
   List<Object> get props => [];
 }
 
-class IncrementCounter extends CounterEvents{}
+class IncrementCounterEvent extends CounterEvents{}
 
-class DecrementCounter extends CounterEvents{}
+class DecrementCounterEvent extends CounterEvents{}

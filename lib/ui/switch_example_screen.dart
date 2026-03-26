@@ -1,4 +1,8 @@
+import 'package:bloc_flutter/bloc/switch/switch_bloc.dart';
+import 'package:bloc_flutter/bloc/switch/switch_event.dart';
+import 'package:bloc_flutter/bloc/switch/switch_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SwitchExampleScreen extends StatefulWidget {
   const SwitchExampleScreen({super.key});
@@ -24,7 +28,14 @@ class _SwitchExampleScreenState extends State<SwitchExampleScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Notification'),
-                Switch(value: true, onChanged: (newValue){})
+                BlocBuilder<SwitchBloc, SwitchState>(
+                    builder: (context, state){
+                      return  Switch(value: state.isSwitch, onChanged: (newValue){
+                        context.read<SwitchBloc>().add(EnableOrDiableNotificationEvent());
+                      });
+
+                    }
+                ),
               ],
             ),
             SizedBox(
