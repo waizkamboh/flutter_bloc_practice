@@ -8,3 +8,10 @@ abstract class SwitchEvent extends Equatable{
 }
 
 class EnableOrDiableNotificationEvent extends SwitchEvent {}
+
+class SliderEvent extends SwitchEvent {
+  double opacity;
+  SliderEvent({required this.opacity});
+
+  List<Object> get props => [opacity];
+}

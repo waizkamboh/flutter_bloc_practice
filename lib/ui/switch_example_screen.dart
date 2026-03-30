@@ -4,14 +4,9 @@ import 'package:bloc_flutter/bloc/switch/switch_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SwitchExampleScreen extends StatefulWidget {
+class SwitchExampleScreen extends StatelessWidget {
   const SwitchExampleScreen({super.key});
 
-  @override
-  State<SwitchExampleScreen> createState() => _SwitchExampleScreenState();
-}
-
-class _SwitchExampleScreenState extends State<SwitchExampleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +26,7 @@ class _SwitchExampleScreenState extends State<SwitchExampleScreen> {
                 BlocBuilder<SwitchBloc, SwitchState>(
                     builder: (context, state){
                       return  Switch(value: state.isSwitch, onChanged: (newValue){
+                        print(newValue);
                         context.read<SwitchBloc>().add(EnableOrDiableNotificationEvent());
                       });
 
@@ -41,14 +37,30 @@ class _SwitchExampleScreenState extends State<SwitchExampleScreen> {
             SizedBox(
               height: 30,
             ),
-            Container(
-              height: 200,
-              color: Colors.red.withOpacity(.2),
+            BlocBuilder<SwitchBloc, SwitchState>(
+                builder: (context, state){
+                  return Container(
+                    height: 200,
+                    color: Colors.red.withOpacity(state.opacity),
+                  );
+
+
+                }
             ),
+
             SizedBox(
               height: 50,
             ),
-            Slider(value: .4, onChanged: (value){})
+            BlocBuilder<SwitchBloc, SwitchState>(
+                builder: (context, state){
+                  return Slider(value: state.opacity, onChanged: (value){
+                    debugPrint(value.toString());
+                     context.read<SwitchBloc>().add(SliderEvent(opacity: value));
+                  });
+
+
+                }
+            ),
           ],
         ),
       ),
