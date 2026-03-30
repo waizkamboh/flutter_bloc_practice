@@ -24,7 +24,9 @@ class SwitchExampleScreen extends StatelessWidget {
               children: [
                 Text('Notification'),
                 BlocBuilder<SwitchBloc, SwitchState>(
+                  buildWhen: (previous, current) => previous.isSwitch != current.isSwitch,
                     builder: (context, state){
+                      print("Notification");
                       return  Switch(value: state.isSwitch, onChanged: (newValue){
                         print(newValue);
                         context.read<SwitchBloc>().add(EnableOrDiableNotificationEvent());
@@ -38,7 +40,9 @@ class SwitchExampleScreen extends StatelessWidget {
               height: 30,
             ),
             BlocBuilder<SwitchBloc, SwitchState>(
+              buildWhen: (previous, current) => previous.opacity != current.opacity,
                 builder: (context, state){
+                  print("Slider");
                   return Container(
                     height: 200,
                     color: Colors.red.withOpacity(state.opacity),
