@@ -35,7 +35,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                   trailing: IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
-                      BlocProvider.of<ToDoBloc>(context).add(RemoveTodoEvent(state.todos[index]));
+                      context.read<ToDoBloc>().add(RemoveTodoEvent(state.todos[index]));
                     },
                   ),
                 );
@@ -51,7 +51,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: ()  {
           for(int i = 0 ; i < 10 ; i++ ){
-            BlocProvider.of<ToDoBloc>(context).add(AddTodoEvent('Task $i'));
+            context.read<ToDoBloc>().add(AddTodoEvent('Task $i'));
           }
         },
         child: const Icon(Icons.add),
