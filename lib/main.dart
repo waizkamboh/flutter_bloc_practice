@@ -2,6 +2,7 @@ import 'package:bloc_flutter/bloc/image_picker/image_picker_bloc.dart';
 import 'package:bloc_flutter/bloc/switch/switch_bloc.dart';
 import 'package:bloc_flutter/ui/image_picker/image_picker_screen.dart';
 import 'package:bloc_flutter/ui/switch_example/switch_example_screen.dart';
+import 'package:bloc_flutter/ui/todo/to_do_screen.dart';
 import 'package:bloc_flutter/utils/image_picker_utils.dart';
 import 'package:flutter/material.dart';
 import 'bloc/counter/counter_bloc.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: .fromSeed(seedColor: Colors.deepPurple),
           ),
-          home: ImagePickerScreen()
+          home: ToDoScreen()
       ),
     );
   }
