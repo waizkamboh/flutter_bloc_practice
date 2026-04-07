@@ -18,21 +18,44 @@ class ImagePickerScreen extends StatelessWidget {
       ),
 
       body: Center(
-        child: BlocBuilder<ImagePickerBloc, ImagePickerState>(
-            builder: (context, state) {
-              if(state.file == null) {
-                return InkWell(
-                  onTap: (){
-                    context.read<ImagePickerBloc>().add(CameraCaptureEvent());
-                  },
-                  child: CircleAvatar(
-                    child: Icon(Icons.camera),
-                  ),
-                );
-              }else {
-                return Image.file(File(state.file!.path.toString()));
-              }
-            }
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocBuilder<ImagePickerBloc, ImagePickerState>(
+                builder: (context, state) {
+                  if(state.file == null) {
+                    return InkWell(
+                      onTap: (){
+                        context.read<ImagePickerBloc>().add(CameraCaptureEvent());
+                      },
+                      child: CircleAvatar(
+                        child: Icon(Icons.camera),
+                      ),
+                    );
+                  }else {
+                    return Image.file(File(state.file!.path.toString()));
+                  }
+                }
+            ),
+            SizedBox(height: 30,),
+            BlocBuilder<ImagePickerBloc, ImagePickerState>(
+                builder: (context, state) {
+                  if(state.fileGallery == null) {
+                    return InkWell(
+                      onTap: (){
+                        context.read<ImagePickerBloc>().add(GalleryPickerEvent());
+                      },
+                      child: CircleAvatar(
+                        child: Icon(Icons.browse_gallery),
+                      ),
+                    );
+                  }else {
+                    return Image.file(File(state.fileGallery!.path.toString()));
+                  }
+                }
+            ),
+          ],
         ),
       )
 

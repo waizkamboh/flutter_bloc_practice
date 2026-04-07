@@ -8,10 +8,16 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState>{
   final ImagePickerUtils imagePickerUtils;
   ImagePickerBloc(this.imagePickerUtils): super(const ImagePickerState()){
     on<CameraCaptureEvent>(cameraCapture);
+    on<GalleryPickerEvent>(pickImageFromGallery);
   }
 
   void cameraCapture(CameraCaptureEvent event, Emitter<ImagePickerState> states) async {
     XFile? file  = await imagePickerUtils.cameraCapture();
     emit(state.copyWith(file: file));
+  }
+
+  void pickImageFromGallery(GalleryPickerEvent event, Emitter<ImagePickerState> states) async {
+    XFile? file  = await imagePickerUtils.pickImageFromGallery();
+    emit(state.copyWith(fileGallery: file));
   }
 }
